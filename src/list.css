@@ -1,0 +1,4 @@
+.cardfilm{
+    display: flex;
+   flex-wrap: wrap;
+}
