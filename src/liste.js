@@ -1,5 +1,6 @@
 import React from 'react';
 import Item from './item';
+import LoaderHoc from './LoaderHoc.js'
 import {Container, Row, Col} from 'reactstrap'
 import './list.css'
 const Liste =({news})=> {
@@ -12,4 +13,4 @@ const Liste =({news})=> {
        
     )      
 }
-export default Liste
+export default LoaderHoc(Liste)

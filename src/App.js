@@ -60,16 +60,16 @@ class App extends Component {
       // title:'',
       // article:'',
       // image:''
-
+      isloading: true
      }
 }
 
 
-search(keyword){
+search=(keyword)=>{
 let filter1=this.state.news.filter((el,i)=>{return el.title.toLocaleLowerCase().indexOf(keyword)>-1})
 this.setState({filtred:filter1})
 }
-searchrate(x){
+searchrate=(x)=>{
   let filter2=this.state.news.filter((el,index)=>{return el.rate==x})
   this.setState({filtred:filter2})
 }
@@ -89,15 +89,18 @@ addmovie =(newmovie)=>{
 })
 }
 
-
+interval=setTimeout(() => { 
+  this.setState({isloading:false})
+  
+}, 1000);
 
   render() {
     return (
       <div className="App">
-        <Header searchname={(keyword)=>this.search(keyword)}/>
-        <Star searchrate={(x)=>this.searchrate(x)}/>
+        <Header searchname={this.search}/>
+        <Star searchrate={this.searchrate}/>
         <Addfilm handlechange={this.handlechange} addmovie={this.addmovie}/>
-        <Liste news={this.state.filtred}/>
+        <Liste news={this.state.filtred} isloading={this.state.isloading}/>
       </div>
     );
   }
